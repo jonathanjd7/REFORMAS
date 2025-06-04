@@ -86,7 +86,7 @@ export default function Contact() {
                   <PhoneIcon className="h-7 w-6 text-gray-400" aria-hidden="true" />
                 </dt>
                 <dd>
-                  <a className="hover:text-gray-900" href="tel:+34 900 123 456">
+                  <a className="hover:text-gray-900" href="tel:+34 650 915 701">
                     +34 650 915 701
                   </a>
                 </dd>

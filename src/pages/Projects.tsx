@@ -2,13 +2,21 @@ import { useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 
-const projects = [
+interface Project {
+  id: number;
+  name: string;
+  description: string;
+  imageUrl: string;
+  details: string[];
+}
+
+const projects: Project[] = [
   {
     id: 1,
     name: 'Reforma Integral de Vivienda',
     description: 'Transformación completa de una vivienda antigua en un espacio moderno y funcional.',
     imageUrl:
-      'https://images.unsplash.com/photo-1560518883-ffc426732767?q=80&w=1973&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://cdn-cieji.nitrocdn.com/GiUuNOFfAKEJxJGJurBLdVIazCnBXqfZ/assets/images/optimized/rev-1b752d0/cubicup.com/wp-content/uploads/2024/02/reforma_integral_madrid_retiro.webp',
     details: [
       'Redistribución de espacios',
       'Instalaciones eléctrica y de fontanería nuevas',
@@ -91,9 +99,9 @@ const projects = [
 
 export default function Projects() {
   const [open, setOpen] = useState(false)
-  const [selectedProject, setSelectedProject] = useState(null)
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
 
-  const handleProjectClick = (project: any) => {
+  const handleProjectClick = (project: Project) => {
     setSelectedProject(project)
     setOpen(true)
   }
@@ -176,7 +184,7 @@ export default function Projects() {
                       <div className="mt-6">
                         <h4 className="text-base font-medium text-gray-900 dark:text-white">Detalles del proyecto:</h4>
                         <ul role="list" className="mt-4 space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                          {selectedProject?.details.map((detail: any) => (
+                          {selectedProject?.details.map((detail) => (
                             <li key={detail} className="flex items-center">
                               <svg className="h-5 w-5 flex-none text-primary-600 dark:text-primary-400 mr-2" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                 <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />

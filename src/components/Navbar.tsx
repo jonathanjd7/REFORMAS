@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Bars3Icon, XMarkIcon, SunIcon, MoonIcon } from '@heroicons/react/24/outline'
 import { useTheme } from '../contexts/ThemeContext'
@@ -14,6 +14,24 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { theme, toggleTheme } = useTheme()
 
+  // Cerrar menú con ESC o al hacer scroll (solo si está abierto)
+  useEffect(() => {
+    if (!mobileMenuOpen) return
+
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') setMobileMenuOpen(false)
+    }
+    const onScroll = () => setMobileMenuOpen(false)
+
+    window.addEventListener('keydown', onKeyDown)
+    window.addEventListener('scroll', onScroll)
+
+    return () => {
+      window.removeEventListener('keydown', onKeyDown)
+      window.removeEventListener('scroll', onScroll)
+    }
+  }, [mobileMenuOpen])
+
   return (
     <header className="bg-white shadow-sm dark:bg-gray-800 dark:shadow-lg">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Global">
@@ -26,10 +44,11 @@ export default function Navbar() {
           <div className="flex lg:hidden">
             <button
               type="button"
-              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-gray-300"
+              className="-m-2.5 inline-flex items-center justify-center rounded-md p-3 text-gray-700 dark:text-gray-300"
               onClick={() => setMobileMenuOpen(true)}
+              aria-label="Abrir menú principal"
+              aria-expanded={mobileMenuOpen}
             >
-              <span className="sr-only">Abrir menú principal</span>
               <Bars3Icon className="h-6 w-6" aria-hidden="true" />
             </button>
           </div>
@@ -57,34 +76,45 @@ export default function Navbar() {
                 <SunIcon className="h-6 w-6" aria-hidden="true" />
               )}
             </button>
-            <Link
-              to="/contacto"
-              className="btn btn-primary"
-            >
+            <Link to="/contacto" className="btn btn-primary">
               Solicitar Presupuesto
             </Link>
           </div>
         </div>
       </nav>
-      
+
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden">
-          <div className="fixed inset-0 z-50" />
-          <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:bg-gray-800 dark:ring-gray-100/10">
+        <>
+          {/* Overlay con fondo semitransparente */}
+          <div
+            className="fixed inset-0 bg-black bg-opacity-30 z-40"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-hidden="true"
+          />
+
+          {/* Menú lateral animado */}
+          <div
+            className="fixed inset-y-0 right-0 z-50 w-full max-w-sm overflow-y-auto bg-white px-6 py-6 dark:bg-gray-800 sm:ring-1 sm:ring-gray-900/10 dark:ring-gray-100/10
+            transform transition-transform duration-300 ease-in-out translate-x-0"
+            role="dialog"
+            aria-modal="true"
+          >
             <div className="flex items-center justify-between">
-              <Link to="/" className="-m-1.5 p-1.5">
+              <Link to="/" className="-m-1.5 p-1.5" onClick={() => setMobileMenuOpen(false)}>
                 <span className="text-2xl font-bold text-primary-600 dark:text-primary-400">Reformas FDY</span>
               </Link>
               <button
                 type="button"
-                className="-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-gray-300"
+                className="-m-2.5 rounded-md p-3 text-gray-700 dark:text-gray-300"
                 onClick={() => setMobileMenuOpen(false)}
+                aria-label="Cerrar menú"
+                aria-expanded={mobileMenuOpen}
               >
-                <span className="sr-only">Cerrar menú</span>
                 <XMarkIcon className="h-6 w-6" aria-hidden="true" />
               </button>
             </div>
+
             <div className="mt-6 flow-root">
               <div className="-my-6 divide-y divide-gray-500/10">
                 <div className="space-y-2 py-6">
@@ -106,7 +136,9 @@ export default function Navbar() {
                       key={item.name}
                       to={item.href}
                       className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-700"
-                      onClick={() => setMobileMenuOpen(false)}
+                      onClick={() => {
+                        setTimeout(() => setMobileMenuOpen(false), 150)
+                      }}
                     >
                       {item.name}
                     </Link>
@@ -116,7 +148,9 @@ export default function Navbar() {
                   <Link
                     to="/contacto"
                     className="btn btn-primary w-full text-center"
-                    onClick={() => setMobileMenuOpen(false)}
+                    onClick={() => {
+                      setTimeout(() => setMobileMenuOpen(false), 150)
+                    }}
                   >
                     Solicitar Presupuesto
                   </Link>
@@ -124,8 +158,8 @@ export default function Navbar() {
               </div>
             </div>
           </div>
-        </div>
+        </>
       )}
     </header>
   )
-} 
+}

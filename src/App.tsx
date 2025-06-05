@@ -13,6 +13,7 @@ function App() {
         <Navbar />
         <main className="flex-grow w-full max-w-[1920px] mx-auto">
           <Routes>
+            <Route path="/REFORMAS" element={<Home />} />
             <Route path="/" element={<Home />} />
             <Route path="/servicios" element={<Services />} />
             <Route path="/proyectos" element={<Projects />} />

@@ -144,13 +144,19 @@ export default function Contact() {
             </form>
           </div>
           <div className="lg:mt-6 lg:row-end-none lg:col-span-1 flex flex-col space-y-8">
+            
             <div className="flex items-center gap-x-4 text-base leading-7 text-gray-600 dark:text-gray-300">
               <EnvelopeIcon className="h-6 w-5 flex-none text-primary-600 dark:text-primary-400" aria-hidden="true" />
-              geofrancis73@hotmail.com
+              <a  href="mailto:geofrancis73@hotmail.com">
+                geofrancis73@hotmail.com
+              </a>
             </div>
+            
              <div className="flex items-center gap-x-4 text-base leading-7 text-gray-600 dark:text-gray-300">
               <PhoneIcon className="h-6 w-5 flex-none text-primary-600 dark:text-primary-400" aria-hidden="true" />
-              +34 650 915 701
+              
+              <a  href="tel:+34 900 123 456"> +34 650 915 701
+                  </a>
             </div>
              <div className="flex items-center gap-x-4 text-base leading-7 text-gray-600 dark:text-gray-300">
               <MapPinIcon className="h-6 w-5 flex-none text-primary-600 dark:text-primary-400" aria-hidden="true" />

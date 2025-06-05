@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { SunIcon, MoonIcon } from '@heroicons/react/24/outline'
 import { useTheme } from '../contexts/ThemeContext'
-import logo from '/Users/CursosTardes/Desktop/REFORMAS/public/REFORMAS.png' // Asegúrate de que esta ruta sea correcta
+import logo from '/REFORMAS.png' // Asegúrate de que esta ruta sea correcta
 
 const navigation = [
   { name: 'Inicio', href: '/' },

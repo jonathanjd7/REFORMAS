@@ -27,7 +27,7 @@ export default function Navbar() {
                 className="h-8 w-8 object-contain"
               />
               <span className="ml-2 text-lg font-bold text-primary-600 dark:text-primary-400">
-                REFORMAS F D Y
+                REFORMAS F D Y.
               </span>
             </Link>
           </div>

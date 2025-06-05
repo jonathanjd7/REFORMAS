@@ -18,7 +18,7 @@ export default function Navbar() {
   useEffect(() => {
     if (!mobileMenuOpen) return
 
-    const onKeyDown = (e) => {
+    const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setMobileMenuOpen(false)
     }
     const onScroll = () => setMobileMenuOpen(false)

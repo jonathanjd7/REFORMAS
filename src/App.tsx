@@ -13,7 +13,7 @@ function App() {
       <div className="flex flex-col min-h-screen">
       <ScrollToTop /> {/* ✅ nuevo */}
         <Navbar />
-        <main className="flex-grow w-full max-w-[1920px] mx-auto">
+        <main className="w-full max-w-[1920px] mx-auto">
           <Routes>
             <Route path="/REFORMAS" element={<Home />} />           
             <Route path="/servicios" element={<Services />} />

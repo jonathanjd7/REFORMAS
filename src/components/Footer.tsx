@@ -3,7 +3,7 @@ import type { SVGProps } from 'react'
 
 const navigation = {
   main: [
-    { name: 'Inicio', href: '/' },
+    { name: 'Inicio', href: '/REFORMAS' },
     { name: 'Servicios', href: '/servicios' },
     { name: 'Proyectos', href: '/proyectos' },
     { name: 'Contacto', href: '/contacto' },

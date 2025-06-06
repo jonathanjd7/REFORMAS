@@ -57,13 +57,14 @@ export default function Footer() {
             <div key={item.name}>
               {item.href.startsWith('http') ? (
                 <a
-                  href={item.href}
+                  href={item.href} 
                   className="text-base text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
                   target="_blank"
                   rel="noopener noreferrer nofollow"
                 >
                   {item.name}
                 </a>
+                
               ) : (
                 <Link
                   to={item.href}

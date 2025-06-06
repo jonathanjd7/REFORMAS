@@ -112,10 +112,10 @@ export default function Projects() {
   }
 
   return (
-    <div className="bg-white py-24 sm:py-32 dark:bg-gray-900">
+    <div className="bg-white pt-8 pb-24 sm:pt-12 sm:pb-32 dark:bg-gray-900">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:text-center">
-          <h2 className="text-base font-semibold leading-7 text-primary-600 dark:text-primary-400">Nuestros Proyectos</h2>
+          <h2 className="text-lg lg:text-xl font-semibold leading-7 text-primary-600 dark:text-primary-400 text-center mb-4">Nuestros Proyectos</h2>
           <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
             Descubre nuestros trabajos realizados
           </p>

@@ -14,7 +14,7 @@ export default function Navbar() {
   const { theme, toggleTheme } = useTheme()
 
   return (
-    <header className="bg-white shadow-sm dark:bg-gray-800 dark:shadow-lg relative pb-5 sm:pb-1 md:pb-1 lg:pb-1">
+    <header className="bg-white shadow-sm dark:bg-gray-800 dark:shadow-lg relative pb-10 sm:pb-1 md:pb-1 lg:pb-1">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Global">
         <div className="flex flex-wrap items-center justify-center h-20 lg:h-24 gap-x-8 gap-y-1 text-center">
           
